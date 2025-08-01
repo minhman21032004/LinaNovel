@@ -1,0 +1,9 @@
+langchain
+tiktoken
+python-dotenv
+pypdf
+langchain-openai
+langchain-community
+langchain-huggingface
+langchain-chroma
+langgraph
