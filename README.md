@@ -51,6 +51,7 @@ pip install -r requirements.txt
 ```
 
 #### **3. Setup environment variables:**
+create .env file in the same directory, in your .env file :
 ```bash
 # Azure OpenAI configuration
 OPENAI_API_KEY="your-azure-openai-key"
