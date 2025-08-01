@@ -9,6 +9,8 @@ from agent import create_app
 
 app = create_app()
 
+ai_avatar = "imgs/AI_Avatar.png"
+
 #Deploy app on streamlit
 @st.cache_resource
 def run_async_task(async_func, *args):
@@ -26,7 +28,7 @@ def run_async_task(async_func, *args):
             loop.close()
 
 async def main():
-    st.title("📧 MailFast Chat Assistant")
+    st.title("📚🌸 Lina Novel ")
 
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
@@ -36,7 +38,7 @@ async def main():
             with st.chat_message("user"):
                 st.markdown(msg.content)
         else:
-            with st.chat_message("assistant"):
+            with st.chat_message("assistant", avatar=ai_avatar):
                 st.markdown(msg.content)
 
     user_input = st.chat_input("Chat with me here")
@@ -53,7 +55,7 @@ async def main():
             assistant_msg = result["messages"][-1]
             st.session_state.chat_history.append(assistant_msg)
 
-            with st.chat_message("assistant"):
+            with st.chat_message("assistant", avatar=ai_avatar):
                 st.markdown(assistant_msg.content)
 
         except Exception as e:
@@ -61,11 +63,25 @@ async def main():
             if "trigger content" in error_message.lower():
                 fallback_msg = "Sorry, something went wrong. Please try a different prompt."
                 st.session_state.chat_history.append(HumanMessage(content=fallback_msg))
-                with st.chat_message("assistant"):
+                with st.chat_message("assistant", avatar=ai_avatar):
                     st.markdown(fallback_msg)
             else:
                 st.error(f"Unexpected error: {error_message}")
 
+
+def run_agent():
+    print("\n=== NOVEL READING IMOUTO ===")
+
+    while True:
+        user_input = input("\nUser: ")
+        if user_input.lower() in ['break', 'quit']:
+            break 
+        print("\nOni-chan: ", user_input)
+        messages = [HumanMessage(content=user_input)]
+
+        result = app.invoke({"messages" : messages}, {"recursion_limit": 100})
+
+        print("\nImouto: ",result['messages'][-1].content)
 
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()

@@ -143,7 +143,6 @@ def cite_from_documents(keyword : str, high_level : int) -> list:
     for i, doc in enumerate(final_docs):
         final_results.append(f"Page {doc.metadata['page']}:\n{doc.page_content}")
 
-
     return final_docs
 
 tools = [retrieve_by_level, retrieve_across_level, cite_from_documents]
@@ -153,10 +152,9 @@ tools_dict = {tool.name : tool for tool in tools}
 llm = llm.bind_tools(tools)
 
 system_prompts = ''
-
 try:
     with open('configs/prompts.txt', 'r', encoding='utf-8') as f:
-        system_prompt = f.read()
+        system_prompts = f.read()
 except FileNotFoundError:
     print("Cannot find system prompts file at 'configs/prompts.txt'")
 except Exception as e:

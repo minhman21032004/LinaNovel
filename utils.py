@@ -36,6 +36,11 @@ def clean_data(data):
         doc.page_content = clean_text(doc.page_content)
     return data
 
+def add_chunk_index(chunks):
+    for i,chunk in enumerate(chunks):
+        chunk.metadata['chunk_index'] = int(i)
+    return chunks
+
 def retype_metadata(chunks):
     for doc in chunks:
         for key, value in doc.metadata.items():

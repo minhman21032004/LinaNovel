@@ -31,6 +31,7 @@ def hierarchical_chunking(data):
         chunks_level_1 = read_chunks(f"{BACKUP_DIRECTORY}/chunks_level_1.txt")
     else:
         chunks_level_1 = split_into_chunks(data)
+        chunks_level_1 = add_chunk_index(chunks_level_1)
         print(f"Completed chunking at level 1 with a total {len(chunks_level_1)} chunks.\n")
         write_chunks(chunks_level_1, f"{BACKUP_DIRECTORY}/chunks_level_1.txt")
 
