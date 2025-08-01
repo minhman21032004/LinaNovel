@@ -76,6 +76,12 @@ streamlit run app.py
 ```
 
 ### Demo application:
+**Sample Data: My Youth Romantic Comedy Is Wrong, as I Expected Vol.1**
+Author : Wataru Watari
+Publisher : YEN press
+Pages : 294
+Document type : Light Novel
+
 **General Question:**
 .            |  .
 :-------------------------:|:-------------------------:
