@@ -6,6 +6,7 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_openai import AzureChatOpenAI
 from langchain.docstore.document import Document
 from langchain_community.document_loaders import UnstructuredWordDocumentLoader, PyPDFLoader, TextLoader
+
 from tqdm import tqdm
 
 load_dotenv()
@@ -103,5 +104,6 @@ def up_level_chunking(chunks, n_content_chunks, level, log_error=False):
             continue
 
     return high_level_chunks
+
 
 

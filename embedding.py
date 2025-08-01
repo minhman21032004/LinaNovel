@@ -5,13 +5,6 @@ from langchain_openai import AzureOpenAIEmbeddings
 from langchain_chroma import Chroma
 import argparse
 
-
-load_dotenv()
-deployment_name = 'gpt-4.1-nano'
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-OPENAI_API_ENDPOINT = os.environ.get('OPENAI_API_ENDPOINT')
-OPENAI_API_VERSION = os.environ.get('OPENAI_API_VERSION')
-
 PERSIST_DIRECTORY = 'chroma_db'
 EMBEDDING_MODEL = 'text-embedding-3-large'
 BACKUP_DIRECTORY = 'backup'
